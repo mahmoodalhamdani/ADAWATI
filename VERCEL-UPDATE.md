@@ -5,7 +5,7 @@
 - The previous Vercel project was deleted by the owner. This package must create a **new ADAWATI project** and must not link to or update the deleted `minjaz` project.
 - The package contains no `.vercel/project.json`, project ID, team ID, previous deployment URL, or other immutable link to an older Vercel project.
 - Suggested new project name: `adawati-tools`.
-- Official production origin: `https://sawi-adawati.mahmoodalhamdani.chatgpt.site`.
+- Official Cloudflare production origin: `https://adawati.adawati.workers.dev`.
 - The ChatGPT Sites deployment is a separate channel; its project ID is intentionally not part of this Vercel package.
 
 ## Drag-and-drop package

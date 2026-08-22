@@ -1,43 +1,59 @@
 # أدواتي | ADAWATI
 
-المصدر الكامل لموقع **أدواتي**، جاهز للرفع إلى مستودع GitHub وربطه مباشرةً بمنصة Vercel.
+منصة أدوات عربية مبنية باستخدام Next.js، ومهيأة للنشر على Cloudflare Workers
+عبر OpenNext. يشمل المستودع السورس الكامل والصفحات وواجهات API والأصول
+والاختبارات وإعداد CI.
 
-## الرفع إلى GitHub
+## المتطلبات
 
-1. أنشئ مستودعًا جديدًا وفارغًا في GitHub.
-2. فك ضغط الحزمة وارفع **محتويات المجلد نفسها** إلى جذر المستودع.
-3. لا ترفع ملفات `.env` أو أي مفاتيح سرية.
-4. فحص GitHub Actions سيشغّل TypeScript وبناء Next.js تلقائيًا بعد كل رفع.
-
-## الربط مع Vercel
-
-استورد مستودع GitHub من لوحة Vercel واستخدم الإعدادات المرفقة في `vercel.json`:
-
-- Framework: `Next.js`
-- Install Command: `npm ci --include=dev`
-- Build Command: `npm run vercel-build`
-- Node.js: `24.x`
-
-أضف المتغيرات التالية في إعدادات Vercel للبيئات Production وPreview وDevelopment:
-
-- `SUPABASE_URL`
-- `SUPABASE_PUBLISHABLE_KEY`
-- `MINJAZ_DB_TOKEN` — متغير سري يُستخدم على الخادم فقط
+- Node.js 24
+- npm
+- حساب Cloudflare Workers للنشر
+- متغيرات Supabase للرسائل والتحليلات ولوحة الإدارة
 
 ## التشغيل المحلي
 
 ```bash
-npm ci --include=dev
+npm ci
 npm run dev
 ```
 
-ثم افتح `http://localhost:3000`.
-
-## التحقق
+## الفحص والبناء
 
 ```bash
 npm run typecheck
 npm run build
+npm run cf:build
 ```
 
-> ملاحظة: هذه الحزمة مناسبة لمستودع GitHub مع نشر Vercel. لا تستخدم GitHub Pages للموقع الكامل؛ لأنه يتضمن Next.js وواجهات API ووظائف خادمية لا تعمل على الاستضافة الثابتة وحدها.
+## النشر على Cloudflare
+
+إعدادات Cloudflare الأساسية موجودة في:
+
+- `wrangler.jsonc`
+- `open-next.config.ts`
+- `CLOUDFLARE-DEPLOY.md`
+
+للنشر من جهاز موثق بحساب Cloudflare:
+
+```bash
+npm run deploy
+```
+
+وللنشر التلقائي من GitHub، اتبع الخطوات الموجودة في
+[`CLOUDFLARE-DEPLOY.md`](./CLOUDFLARE-DEPLOY.md).
+
+## متغيرات البيئة
+
+انسخ أسماء المتغيرات من `.env.example`. لا ترفع `.env` أو `.dev.vars` ولا أي
+مفتاح سري إلى GitHub.
+
+- `NEXT_PUBLIC_SITE_URL`
+- `SUPABASE_URL`
+- `SUPABASE_PUBLISHABLE_KEY`
+- `MINJAZ_DB_TOKEN`
+
+## Vercel
+
+ما زال `vercel.json` وسكربت `vercel-build` موجودين للحفاظ على إمكانية النشر على
+Vercel، لكن إعداد النشر الأساسي في هذا المستودع هو Cloudflare Workers.
