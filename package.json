@@ -1,0 +1,65 @@
+{
+  "name": "adawati-tools",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.mjs",
+    "cf:build": "opennextjs-cloudflare build",
+    "preview": "npm run cf:build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "vercel-build": "next build",
+    "start": "next start",
+    "dev:vercel": "next dev"
+  },
+  "dependencies": {
+    "@aiden0z/pptx-renderer": "^1.2.4",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@opennextjs/cloudflare": "1.20.2",
+    "docx": "^9.7.1",
+    "docx-preview": "^0.4.0",
+    "drizzle-orm": "0.45.2",
+    "exceljs": "^4.4.0",
+    "fflate": "^0.8.2",
+    "lucide-react": "^1.32.0",
+    "mammoth": "^1.11.0",
+    "next": "16.3.2",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.2.108",
+    "pdfstudio": "^0.4.0",
+    "pptxgenjs": "^4.0.1",
+    "qrcode": "^1.5.4",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "simple-icons": "^16.28.0",
+    "tesseract.js": "^6.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260822.1",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "tailwindcss": "4.2.1",
+    "tsx": "^4.23.12",
+    "typescript": "5.9.3",
+    "wrangler": "4.125.0"
+  },
+  "overrides": {
+    "uuid": "11.1.1"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true,
+    "tesseract.js@6.0.1": true
+  },
+  "type": "module",
+  "displayName": "أدواتي | ADAWATI"
+}
